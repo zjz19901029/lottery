@@ -1,0 +1,309 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@keyframes button{
+	0%{
+		     box-shadow: 0 0 1.066667rem 0.333333rem #fff;
+	}
+	100%{
+		   
+		    box-shadow: 0 0 0.266667rem 0.133333rem #fff;
+	}
+}
+.disabled{
+	pointer-events: none;
+}
+@keyframes shake{
+	0%{transform:translate(-0.053333rem);}
+	100%{transform:translate(0.053333rem);}
+}
+.wrap{
+	    width: 9.2rem;
+    height: 9.2rem;
+    margin: auto;
+    background: -webkit-radial-gradient(#3c1c01 58%,#b76620 66%, #150a00 75%);
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 0 0.4rem 0.04rem #000;
+        margin-top: 1.6rem;
+}
+.animate .wrap{
+	animation: shake .05s infinite ease-in-out alternate;
+}
+.frame{
+	    width: 8.133333rem;
+    height: 8.133333rem;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0.733333rem;
+    box-sizing: border-box;
+    border-radius: 50%;
+        background: -webkit-radial-gradient(#ec99ff 50%, #c100ff 70%);
+}
+.circle{
+	width: 6.666667rem;
+	height: 6.666667rem;
+	position: relative;
+		margin:auto;
+	border-radius: 50%;
+	overflow:hidden;
+	transition:all 4s;
+	box-shadow: 0 0 0.4rem 0px #7d3d00;
+}
+.circle p{
+	width: 0;
+	height: 0;
+	border:1.380667rem #ccc solid;
+	border-top-width: 3.333333rem;
+	border-color:#ffbc20 transparent transparent transparent;
+	position: absolute;
+	z-index: 1;
+	left: 1.952666rem;
+	transform-origin:1.380667rem 3.333333rem;
+}
+.circle p.light{
+	border-top-color: #ffe226;
+}
+.circle p:nth-child(even){
+	/*border-color:#f9c735 transparent transparent transparent;*/
+}
+.circle span{
+	position: absolute;
+	left: 50%;
+	font-size: 0.346667rem;
+	top: -2.533333rem;
+	transform: translate(-50%);
+}
+.button{
+	    position: absolute;
+    width: 1.733333rem;
+    height: 1.733333rem;
+    font-size: 0.4rem;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.button button{
+	width: 1.733333rem;
+    height: 1.733333rem;
+    font-size: 0.4rem;
+        background: -webkit-radial-gradient(#fbc575, #f50);
+    border-radius: 50%;
+    line-height: 1.466667rem;
+    border: 0.133333rem #fff solid;
+    box-sizing: border-box;
+    color: #fff;
+    animation:button 2s infinite alternate;
+}
+@keyframes white{
+	0%{
+		box-shadow: 0 0 1.066667rem 0 #fff;
+	}
+	70%{
+		box-shadow: 0 0 1.066667rem 4.0rem #fff;
+	}
+	100%{
+		box-shadow: 0 0 1.066667rem 0 #fff;
+	}
+}
+mark.white{
+	position: absolute;
+	width: 1px;height: 1px;
+	left: 50%;
+	top: 50%;
+	border-radius: 50%;
+	
+    /*transition:all 1s ease-in;*/
+    z-index: 4;
+}
+.playing mark.white{
+	animation:white 3s;
+	/*transition:all 1s ease-out;
+	box-shadow: 0 0 1.066667rem 5.0rem #fff;*/
+}
+.button p{
+	    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0.186667rem #ccc solid;
+    border-color: transparent transparent #ff1302 transparent;
+    border-bottom-width: 1.466667rem;
+    top: -1.2rem;
+    left: 0.666667rem;
+    z-index: -1;
+}
+@keyframes bubbles1{
+	100%{
+		background: -webkit-radial-gradient(#ff9800, #fff);
+	}
+}
+@keyframes bubbles2{
+	100%{
+		background: -webkit-radial-gradient(#ff00df, #fff);
+	}
+}
+@keyframes bubbles3{
+	100%{
+		background: -webkit-radial-gradient(#4aff00, #fff);
+	}
+}
+.bubbles span{
+	    display: block;
+    position: absolute;
+    width: 0.346667rem;
+    height: 0.346667rem;
+    border-radius: 50%;
+    background: -webkit-radial-gradient(#ffc063, #ff8d00);
+    left: 0;
+    right: 0;
+    margin: auto;
+        top: 0.066667rem;
+    transform-origin: 0.173333rem 4.533333rem;
+}
+.bubbles span:nth-child(2){transform: rotate(30deg);}
+.bubbles span:nth-child(3){transform: rotate(60deg);}
+.bubbles span:nth-child(4){transform: rotate(90deg);}
+.bubbles span:nth-child(5){transform: rotate(120deg);}
+.bubbles span:nth-child(6){transform: rotate(150deg);}
+.bubbles span:nth-child(7){transform: rotate(180deg);}
+.bubbles span:nth-child(8){transform: rotate(210deg);}
+.bubbles span:nth-child(9){transform: rotate(240deg);}
+.bubbles span:nth-child(10){transform: rotate(270deg);}
+.bubbles span:nth-child(11){transform: rotate(300deg);}
+.bubbles span:nth-child(12){transform: rotate(330deg);}
+.bubbles span:nth-child(n){
+	animation: bubbles1 1s infinite alternate;
+}
+.bubbles span:nth-child(2n){
+    background: -webkit-radial-gradient(#ff7aee, #ff1ee2);
+	animation: bubbles2 1s .5s infinite alternate;
+}
+.bubbles span:nth-child(3n){
+	background: -webkit-radial-gradient(#78ff40, #4ce80c);
+	animation: bubbles3 1s 1s infinite alternate;
+}
+.playing .bubbles span{
+	animation-duration: .3s;
+}
+
+.dialog{
+	position: fixed;
+	top: 4.4rem;
+	left: 50%;
+	transform: translate(-50%);
+	display: none;
+	z-index: 99;
+	    width: 5.866667rem;
+    height: 3.6rem;
+    background: #fff;
+    border-radius: 0.333333rem;
+    padding: 0.533333rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+.dialog p{
+	font-size: 0.346667rem;
+	line-height: 0.4rem;
+	text-align: center;
+}
+.dialog button{
+    width: 2.666667rem;
+    height: 1.066667rem;
+    background: #69da2c;
+    border: none;
+    border-radius: 0.133333rem;
+    text-align: center;
+    margin-top: 1.066667rem;
+    font-size: 0.373333rem;
+    color: #fff;
+}
+@keyframes show{
+	0%{
+		transform: translate(-50%) scale(0);
+	}
+	90%{
+		transform: translate(-50%) scale(1.4);
+	}
+	100%{
+		transform: translate(-50%) scale(1);
+	}
+}
+@keyframes hide{
+	0%{
+		transform: translate(-50%) scale(1);
+	}
+	10%{
+		transform: translate(-50%) scale(1.4);
+	}
+	99%{
+		transform: translate(-50%) scale(0);
+	}
+	100%{
+		transform: translate(-50%) scale(0);
+		display: none;
+	}
+}
+.dialog.show{
+	display: block;
+	animation:show .3s ease-out forwards;
+}
+.dialog.hide{
+	display: block;
+	animation:hide .5s forwards;
+}

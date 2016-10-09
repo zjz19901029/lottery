@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <meta content="铂涛,铂涛集团,铂涛酒店集团,铂涛app,铂涛会APP,7天连锁酒店,七天连锁酒店" name="keywords">
+        <title>大转盘</title>
+        <link href="css/base.css" rel="stylesheet">
+        <script src="http://imgs.plateno.com:8080/static/js/flexible_css.js"></script>
+        <script src="http://imgs.plateno.com:8080/static/js/flexible.js"></script>
+        <script src='http://imgs.plateno.com:8080/static/js/jquery-2.1.1.min.js'></script>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="frame">
+                <div class="circle">
+                    <p data-lottery="1"><span>一等奖</span></p>
+                    <p><span>谢谢参与</span></p>
+                    <p data-lottery="2"><span>二等奖</span></p>
+                    <p><span>谢谢参与</span></p>
+                    <p data-lottery="3"><span>三等奖</span></p>
+                    <p><span>谢谢参与</span></p>
+                    <p data-lottery="4"><span>四等奖</span></p>
+                    <p><span>谢谢参与</span></p>
+                </div>
+                <div class="button">
+                    <button>抽奖</button>
+                    <p></p>
+                </div>
+            </div>
+            <div class="bubbles">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <mark class="white"></mark>
+            <div class="dialog">
+                <p></p>
+                <button>确定</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                //var radius = $(window).width()/3;//半径
+                var sum = 8;
+                var loterry;//中奖的index
+                var minRotate = 2160;//最少转动角度
+                var rotate = 0;
+                var duration = 4;
+                var $items = $(".circle p");
+                var light = 0;
+                var showTime,loterryTime;
+                //var borderWidth = radius*Math.tan(360/sum/2*Math.PI/180);
+               // $(".circle").css("width",radius*2+"px").css("height",radius*2+"px");
+                $(".circle p").each(function(){
+                   // $(this).css("border-width",radius+"px "+borderWidth+"px 0px "+borderWidth+"px");
+                    //$(this).css("left",radius-borderWidth+"px");
+                    var jiao = $(this).index()*360/sum;
+                    $(this).css("transform","rotate("+jiao+"deg)");
+                    //$(this).css("transform-origin",borderWidth+"px "+radius+"px");
+                });
+                $(".button").click(function(){
+                    $(this).addClass("disabled");
+                    loterry = Math.floor(Math.random()*sum);
+                    rotate = rotate-rotate%360+minRotate+360-loterry*360/sum;//需要转动的角度
+                    $(".circle").css("transform","rotate("+rotate+"deg)");
+                    $(".circle").css("transition-duration",duration+"s");
+                    $("body").addClass("playing animate");
+                    setTimeout(function(){
+                        if($items.eq(loterry).attr('data-lottery')){
+                            dialog(true,"恭喜你中了"+$items.eq(loterry).attr('data-lottery')+"等奖");
+                        }else{
+                            dialog(true,"很遗憾你没有中奖");
+                        }
+                        $(".button").removeClass("disabled");
+                        $("body").removeClass("playing");
+                    },duration*1000);
+                    setTimeout(function(){
+                        $("body").removeClass("animate");
+                    },duration*1000-1000);
+                    loterryLight();
+                });
+                function show(){
+                    loterryTime&&clearInterval(loterryTime);
+                    showTime = setInterval(function(){
+                        light = light%sum;
+                        $items.removeClass("light");
+                        $items.eq(light).addClass("light");
+                        $items.eq((light+sum/2)%sum).addClass("light");
+                        light++;
+                    },500);
+                }
+                show();
+                function loterryLight(){
+                    showTime&&clearInterval(showTime);
+                    var timeBetween;
+                    if(light>=loterry){
+                        timeBetween = loterry+sum-light;
+                    }else{
+                        timeBetween = loterry-light;
+                    }
+                    var time = timeBetween*300;
+                    var delayTime = duration*1000-time;
+                    setTimeout(function(){
+                        loterryTime = setInterval(function(){
+                            light = light%sum;
+                            $items.removeClass("light");
+                            $items.eq(light).addClass("light");
+                            if(light == loterry){//已经转动到了中奖项
+                                clearInterval(loterryTime);
+                            }
+                            light++;
+                        },300);
+                    },delayTime);
+                }
+                $(".dialog button").click(function(){
+                    dialog(false);
+                });
+                function dialog(bool,txt){
+                    if(bool){
+                        $(".dialog").removeClass("hide").addClass("show").find("p").html(txt);
+                    }else{
+                        $(".dialog").removeClass("show").addClass("hide");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
