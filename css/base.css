@@ -117,8 +117,8 @@ table {
   margin: auto;
   border-radius: 50%;
   overflow: hidden;
-  -webkit-transition: all 4s;
-  transition: all 4s;
+  -webkit-transition: all 5s;
+  transition: all 5s;
   -webkit-box-shadow: 0 0 0.4rem 0px #7d3d00;
           box-shadow: 0 0 0.4rem 0px #7d3d00; }
 
@@ -213,10 +213,10 @@ mark.white {
   z-index: 4; }
 
 .playing mark.white {
-  -webkit-animation: white 3s;
-          animation: white 3s;
+  -webkit-animation: white 4s;
+          animation: white 4s;
   /*transition:all 1s ease-out;
-	box-shadow: 0 0 1.066667rem 5.0rem #fff;*/ }
+  box-shadow: 0 0 1.066667rem 5.0rem #fff;*/ }
 
 .button p {
   position: absolute;
