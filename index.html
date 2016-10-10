@@ -76,7 +76,7 @@
                     rotate = rotate-rotate%360+minRotate+360-loterry*360/sum;//需要转动的角度
                     $(".circle").css("transform","rotate("+rotate+"deg)");
                     $(".circle").css("transition-duration",duration+"s");
-                    $("body").addClass("playing animate");
+                    $("body").addClass("playing");
                     setTimeout(function(){
                         if($items.eq(loterry).attr('data-lottery')){
                             dialog(true,"恭喜你中了"+$items.eq(loterry).attr('data-lottery')+"等奖");
@@ -86,6 +86,9 @@
                         $(".button").removeClass("disabled");
                         $("body").removeClass("playing");
                     },duration*1000);
+                    setTimeout(function(){
+                        $("body").addClass("animate");
+                    },1000);
                     setTimeout(function(){
                         $("body").removeClass("animate");
                     },duration*1000-1000);
