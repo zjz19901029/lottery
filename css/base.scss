@@ -240,18 +240,22 @@ mark.white {
     background: -webkit-radial-gradient(#ff9800, #fff); } }
 
 @-webkit-keyframes bubbles2 {
+  0%{background: -webkit-radial-gradient(#ff7aee, #ff1ee2);}
   100% {
     background: -webkit-radial-gradient(#ff00df, #fff); } }
 
 @keyframes bubbles2 {
+  0%{background: -webkit-radial-gradient(#ff7aee, #ff1ee2);}
   100% {
     background: -webkit-radial-gradient(#ff00df, #fff); } }
 
 @-webkit-keyframes bubbles3 {
+  0%{background: -webkit-radial-gradient(#78ff40, #4ce80c);}
   100% {
     background: -webkit-radial-gradient(#4aff00, #fff); } }
 
 @keyframes bubbles3 {
+  0%{background: -webkit-radial-gradient(#78ff40, #4ce80c);}
   100% {
     background: -webkit-radial-gradient(#4aff00, #fff); } }
 
