@@ -234,33 +234,37 @@ mark.white {
   z-index: -1; }
 
 @-webkit-keyframes bubbles1 {
+  50% {
+    background: -webkit-radial-gradient(#ffc063, #ff8d00); }
   100% {
     background: -webkit-radial-gradient(#ff9800, #fff); } }
 
 @keyframes bubbles1 {
+  50% {
+    background: -webkit-radial-gradient(#ffc063, #ff8d00); }
   100% {
     background: -webkit-radial-gradient(#ff9800, #fff); } }
 
 @-webkit-keyframes bubbles2 {
-  0% {
+  50% {
     background: -webkit-radial-gradient(#ff7aee, #ff1ee2); }
   100% {
     background: -webkit-radial-gradient(#ff00df, #fff); } }
 
 @keyframes bubbles2 {
-  0% {
+  50% {
     background: -webkit-radial-gradient(#ff7aee, #ff1ee2); }
   100% {
     background: -webkit-radial-gradient(#ff00df, #fff); } }
 
 @-webkit-keyframes bubbles3 {
-  0% {
+  50% {
     background: -webkit-radial-gradient(#78ff40, #4ce80c); }
   100% {
     background: -webkit-radial-gradient(#4aff00, #fff); } }
 
 @keyframes bubbles3 {
-  0% {
+  50% {
     background: -webkit-radial-gradient(#78ff40, #4ce80c); }
   100% {
     background: -webkit-radial-gradient(#4aff00, #fff); } }
@@ -336,18 +340,18 @@ mark.white {
   transform: rotate(330deg); }
 
 .bubbles span:nth-child(n) {
-  -webkit-animation: bubbles1 1s infinite alternate;
-  animation: bubbles1 1s infinite alternate; }
+  -webkit-animation: bubbles1 1s infinite;
+  animation: bubbles1 1s infinite; }
 
 .bubbles span:nth-child(2n) {
   background: -webkit-radial-gradient(#ff7aee, #ff1ee2);
-  -webkit-animation: bubbles2 1s .5s infinite alternate;
-  animation: bubbles2 1s .5s infinite alternate; }
+  -webkit-animation: bubbles2 1s .3s infinite;
+  animation: bubbles2 1s .3s infinite; }
 
 .bubbles span:nth-child(3n) {
   background: -webkit-radial-gradient(#78ff40, #4ce80c);
-  -webkit-animation: bubbles3 1s 1s infinite alternate;
-  animation: bubbles3 1s 1s infinite alternate; }
+  -webkit-animation: bubbles3 1s .6s infinite;
+  animation: bubbles3 1s .6s infinite; }
 
 .playing .bubbles span {
   -webkit-animation-duration: .3s;
