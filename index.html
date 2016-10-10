@@ -107,25 +107,30 @@
                 show();
                 function loterryLight(){
                     showTime&&clearInterval(showTime);
-                    var timeBetween;
+                    var step;//到达中奖的区域 需要移动的步数
                     if(light>=loterry){
-                        timeBetween = loterry+sum-light;
+                        step = loterry+sum-light;
                     }else{
-                        timeBetween = loterry-light;
+                        step = loterry-light;
                     }
-                    var time = timeBetween*300;
-                    var delayTime = duration*1000-time;
-                    setTimeout(function(){
-                        loterryTime = setInterval(function(){
+                    var stepAll = step+3*sum;
+                    var time = (duration*1000-500)/stepAll;
+                    lightAnimate(time,stepAll)();
+                }
+                function lightAnimate(time,stepAll){
+                    var step = 0,lightInterval;
+                    return function(){
+                        lightInterval = setInterval(function(){
                             light = light%sum;
                             $items.removeClass("light");
                             $items.eq(light).addClass("light");
-                            if(light == loterry){//已经转动到了中奖项
-                                clearInterval(loterryTime);
+                            if(step == stepAll){//已经转动到了中奖项
+                                clearInterval(lightInterval);
                             }
                             light++;
-                        },300);
-                    },delayTime);
+                            step++;
+                        },time);
+                    };
                 }
                 $(".dialog button").click(function(){
                     dialog(false);
