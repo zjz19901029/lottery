@@ -503,13 +503,13 @@ mark.white {
 
 @-webkit-keyframes particle {
   100% {
-    -webkit-box-shadow: 60px 0px 20px 0px #fff,0px 60px 20px 0px #fff,-60px 0px 20px 0px #fff,0px -60px 20px 0px #fff;
-            box-shadow: 60px 0px 20px 0px #fff,0px 60px 20px 0px #fff,-60px 0px 20px 0px #fff,0px -60px 20px 0px #fff; } }
+    -webkit-box-shadow: 0.8rem 0px 0.266667rem 0px #fff,0px 0.8rem 0.266667rem 0px #fff,-0.8rem 0px 0.266667rem 0px #fff,0px -0.8rem 0.266667rem 0px #fff;
+            box-shadow: 0.8rem 0px 0.266667rem 0px #fff,0px 0.8rem 0.266667rem 0px #fff,-0.8rem 0px 0.266667rem 0px #fff,0px -0.8rem 0.266667rem 0px #fff; } }
 
 @keyframes particle {
   100% {
-    -webkit-box-shadow: 60px 0px 20px 0px #fff,0px 60px 20px 0px #fff,-60px 0px 20px 0px #fff,0px -60px 20px 0px #fff;
-            box-shadow: 60px 0px 20px 0px #fff,0px 60px 20px 0px #fff,-60px 0px 20px 0px #fff,0px -60px 20px 0px #fff; } }
+    -webkit-box-shadow: 0.8rem 0px 0.266667rem 0px #fff,0px 0.8rem 0.266667rem 0px #fff,-0.8rem 0px 0.266667rem 0px #fff,0px -0.8rem 0.266667rem 0px #fff;
+            box-shadow: 0.8rem 0px 0.266667rem 0px #fff,0px 0.8rem 0.266667rem 0px #fff,-0.8rem 0px 0.266667rem 0px #fff,0px -0.8rem 0.266667rem 0px #fff; } }
 
 @-webkit-keyframes particlerotate {
   100% {
@@ -535,11 +535,11 @@ mark.white {
             animation: particlerotate 5s cubic-bezier(0.68, 0.01, 0.13, 1); }
 
 .particle span {
-  -webkit-box-shadow: 650px 0px 20px 0px #fff,0px 650px 20px 0px #fff,-650px 0px 20px 0px #fff,0px -650px 20px 0px #fff;
-          box-shadow: 650px 0px 20px 0px #fff,0px 650px 20px 0px #fff,-650px 0px 20px 0px #fff,0px -650px 20px 0px #fff;
+  -webkit-box-shadow: 8.666667rem 0px 0.266667rem 0px #fff,0px 8.666667rem 0.266667rem 0px #fff,-8.666667rem 0px 0.266667rem 0px #fff,0px -8.666667rem 0.266667rem 0px #fff;
+          box-shadow: 8.666667rem 0px 0.266667rem 0px #fff,0px 8.666667rem 0.266667rem 0px #fff,-8.666667rem 0px 0.266667rem 0px #fff,0px -8.666667rem 0.266667rem 0px #fff;
   border-radius: 50%;
-  height: 15px;
-  width: 15px;
+  height: 0.2rem;
+  width: 0.2rem;
   display: block;
   position: absolute;
   left: 50%;
@@ -551,20 +551,20 @@ mark.white {
     -webkit-animation: particle 1s 3;
             animation: particle 1s 3; }
   .particle span:nth-child(2) {
-    width: 20px;
-    height: 20px; }
+    width: 0.266667rem;
+    height: 0.266667rem; }
     .playing .particle span:nth-child(2) {
       -webkit-animation: particle 1s .25s 3;
               animation: particle 1s .25s 3; }
   .particle span:nth-child(3) {
-    width: 25px;
-    height: 25px; }
+    width: 0.333333rem;
+    height: 0.333333rem; }
     .playing .particle span:nth-child(3) {
       -webkit-animation: particle 1s .5s 3;
               animation: particle 1s .5s 3; }
   .particle span:nth-child(4) {
-    width: 25px;
-    height: 25px; }
+    width: 0.333333rem;
+    height: 0.333333rem; }
     .playing .particle span:nth-child(4) {
       -webkit-animation: particle 1s .75s 3;
               animation: particle 1s .75s 3; }
