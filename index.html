@@ -7,47 +7,55 @@
         <meta content="telephone=no" name="format-detection">
         <meta content="铂涛,铂涛集团,铂涛酒店集团,铂涛app,铂涛会APP,7天连锁酒店,七天连锁酒店" name="keywords">
         <title>大转盘</title>
-        <link href="css/base.css" rel="stylesheet">
         <script src="http://imgs.plateno.com:8080/static/js/flexible_css.js"></script>
         <script src="http://imgs.plateno.com:8080/static/js/flexible.js"></script>
+        <link href="css/base.css" rel="stylesheet">
         <script src='http://imgs.plateno.com:8080/static/js/jquery-2.1.1.min.js'></script>
     </head>
     <body>
-        <div class="wrap">
-            <div class="frame">
-                <div class="circle">
-                    <p data-lottery="1"><span>一等奖</span></p>
-                    <p><span>谢谢参与</span></p>
-                    <p data-lottery="2"><span>二等奖</span></p>
-                    <p><span>谢谢参与</span></p>
-                    <p data-lottery="3"><span>三等奖</span></p>
-                    <p><span>谢谢参与</span></p>
-                    <p data-lottery="4"><span>四等奖</span></p>
-                    <p><span>谢谢参与</span></p>
+        <div class="main">
+            <div class="wrap">
+                <div class="frame">
+                    <div class="circle">
+                        <p data-lottery="1"><span>一等奖</span></p>
+                        <p><span>谢谢参与</span></p>
+                        <p data-lottery="2"><span>二等奖</span></p>
+                        <p><span>谢谢参与</span></p>
+                        <p data-lottery="3"><span>三等奖</span></p>
+                        <p><span>谢谢参与</span></p>
+                        <p data-lottery="4"><span>四等奖</span></p>
+                        <p><span>谢谢参与</span></p>
+                    </div>
+                    <div class="button">
+                        <button>抽奖</button>
+                        <p></p>
+                    </div>
                 </div>
-                <div class="button">
-                    <button>抽奖</button>
+                <div class="bubbles">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <mark class="white"></mark>
+                <div class="dialog">
                     <p></p>
+                    <button>确定</button>
                 </div>
             </div>
-            <div class="bubbles">
+            <div class="particle">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <mark class="white"></mark>
-            <div class="dialog">
-                <p></p>
-                <button>确定</button>
             </div>
         </div>
         <script type="text/javascript">
@@ -60,7 +68,7 @@
                 var duration = 5;
                 var $items = $(".circle p");
                 var light = 0;
-                var showTime,loterryTime;
+                var showTime,loterryTime,bubblesInterval;
                 //var borderWidth = radius*Math.tan(360/sum/2*Math.PI/180);
                // $(".circle").css("width",radius*2+"px").css("height",radius*2+"px");
                 $(".circle p").each(function(){
@@ -83,6 +91,7 @@
                         }else{
                             dialog(true,"很遗憾你没有中奖");
                         }
+                        bubblesInterval&&clearInterval(bubblesInterval);
                         $(".button").removeClass("disabled");
                         $("body").removeClass("playing");
                     },duration*1000);
@@ -93,9 +102,11 @@
                         $("body").removeClass("animate");
                     },duration*1000-1000);
                     loterryLight();
+                    bubbles();
                 });
                 function show(){
                     loterryTime&&clearInterval(loterryTime);
+                    bubblesInterval&&clearInterval(bubblesInterval);
                     showTime = setInterval(function(){
                         light = light%sum;
                         $items.removeClass("light");
@@ -116,6 +127,16 @@
                     var stepAll = step+3*sum;
                     var time = (duration*1000-500)/stepAll;
                     lightAnimate(time,stepAll)();
+                }
+                function bubbles(){
+                    var $bubbles = $(".bubbles span");
+                    var index = 0;
+                    bubblesInterval = setInterval(function(){
+                        index = index%($bubbles.length);
+                        $bubbles.removeClass("light");
+                        $bubbles.eq(index).addClass("light");
+                        index++;
+                    },1.5/12*1000);
                 }
                 function lightAnimate(time,stepAll){
                     var step = 0,lightInterval;

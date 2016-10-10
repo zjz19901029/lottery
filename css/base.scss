@@ -44,7 +44,7 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
-
+html{background: #3c1865;}
 @-webkit-keyframes button {
   0% {
     -webkit-box-shadow: 0 0 1.066667rem 0.333333rem #fff;
@@ -64,21 +64,23 @@ table {
 .disabled {
   pointer-events: none; }
 
-@-webkit-keyframes shake {
-  0% {
-    -webkit-transform: translate(-0.05333rem);
-            transform: translate(-0.05333rem); }
-  100% {
-    -webkit-transform: translate(0.05333rem);
-            transform: translate(0.05333rem); } }
-
 @keyframes shake {
-  0% {
-    -webkit-transform: translate(-0.05333rem);
-            transform: translate(-0.05333rem); }
+  0%{
+    transform: translate(-0.013333rem);
+  }
+  25%{
+    transform: translate(0,-0.013333rem);
+  }
+  50%{
+    transform: translate(0.013333rem);
+  }
+  75%{
+    transform: translate(0,0.013333rem); 
+  }
   100% {
-    -webkit-transform: translate(0.05333rem);
-            transform: translate(0.05333rem); } }
+    transform: translate(-0.013333rem);
+  } 
+}
 
 .wrap {
   width: 9.2rem;
@@ -91,11 +93,10 @@ table {
           box-shadow: 0 0 0.4rem 0.04rem #000;
   margin-top: 1.6rem; }
 .playing .wrap {
-  animation: shake .1s infinite ease-in-out alternate;
+  animation: shake .1s infinite linear;
 }
 .animate .wrap {
-  -webkit-animation: shake .05s infinite ease-in-out alternate;
-          animation: shake .05s infinite ease-in-out alternate; }
+          animation: shake .05s infinite linear; }
 
 .frame {
   width: 8.133333rem;
@@ -231,35 +232,6 @@ mark.white {
   left: 0.666667rem;
   z-index: -1; }
 
-@-webkit-keyframes bubbles1 {
-  50%{background: -webkit-radial-gradient(#ffc063, #ff8d00);}
-  100% {
-    background: -webkit-radial-gradient(#ff9800, #fff); } }
-
-@keyframes bubbles1 {
-  50%{background: -webkit-radial-gradient(#ffc063, #ff8d00);}
-  100% {
-    background: -webkit-radial-gradient(#ff9800, #fff); } }
-
-@-webkit-keyframes bubbles2 {
-  50%{background: -webkit-radial-gradient(#ff7aee, #ff1ee2);}
-  100% {
-    background: -webkit-radial-gradient(#ff00df, #fff); } }
-
-@keyframes bubbles2 {
-  50%{background: -webkit-radial-gradient(#ff7aee, #ff1ee2);}
-  100% {
-    background: -webkit-radial-gradient(#ff00df, #fff); } }
-
-@-webkit-keyframes bubbles3 {
-  50%{background: -webkit-radial-gradient(#78ff40, #4ce80c);}
-  100% {
-    background: -webkit-radial-gradient(#4aff00, #fff); } }
-
-@keyframes bubbles3 {
-  50%{background: -webkit-radial-gradient(#78ff40, #4ce80c);}
-  100% {
-    background: -webkit-radial-gradient(#4aff00, #fff); } }
 
 .bubbles span {
   display: block;
@@ -331,23 +303,51 @@ mark.white {
       -ms-transform: rotate(330deg);
           transform: rotate(330deg); }
 
-.bubbles span:nth-child(n) {
-  -webkit-animation: bubbles1 1s infinite;
-          animation: bubbles1 1s infinite; }
 
+@keyframes bubbles1 {
+  0%{background: -webkit-radial-gradient(#ffc063, #ff8d00);}
+  100% {
+    background: -webkit-radial-gradient(#ff9800, #fff); 
+    box-shadow: 0 0 0.266667rem 0.066667rem #fff;
+  }}
+@keyframes bubbles2 {
+  0%{background: -webkit-radial-gradient(#ff7aee, #ff1ee2);}
+  100% {
+    background: -webkit-radial-gradient(#ff00df, #fff);
+    box-shadow: 0 0 0.266667rem 0.066667rem #fff;
+     } }
+@keyframes bubbles3 {
+  0%{background: -webkit-radial-gradient(#78ff40, #4ce80c);}
+  100% {
+    background: -webkit-radial-gradient(#4aff00, #fff);
+    box-shadow: 0 0 0.266667rem 0.066667rem #fff;
+    } }
+.bubbles span:nth-child(n) {
+          animation: bubbles1 1s infinite steps(2); 
+        }
+.playing .bubbles span.light:nth-child(n){
+  background: -webkit-radial-gradient(#ff9800, #fff);
+  box-shadow: 0 0 0.266667rem 0.066667rem #fff;
+}
 .bubbles span:nth-child(2n) {
   background: -webkit-radial-gradient(#ff7aee, #ff1ee2);
-  -webkit-animation: bubbles2 1s .3s infinite;
-          animation: bubbles2 1s .3s infinite; }
+          animation: bubbles2 1s .3s infinite steps(2); 
+  }
+.playing .bubbles span.light:nth-child(2n){
+  background: -webkit-radial-gradient(#ff00df, #fff);
+  box-shadow: 0 0 0.266667rem 0.066667rem #fff;
+}
 
 .bubbles span:nth-child(3n) {
   background: -webkit-radial-gradient(#78ff40, #4ce80c);
-  -webkit-animation: bubbles3 1s .6s infinite;
-          animation: bubbles3 1s .6s infinite; }
+          animation: bubbles3 1s .6s infinite steps(2);
+ }
+.playing .bubbles span.light:nth-child(3n){
+  background: -webkit-radial-gradient(#4aff00, #fff);
+  box-shadow: 0 0 0.266667rem 0.066667rem #fff;
+}
 
-.playing .bubbles span {
-  -webkit-animation-duration: .3s;
-          animation-duration: .3s; }
+.playing .bubbles span {animation:none; }
 
 .dialog {
   position: fixed;
@@ -422,16 +422,12 @@ mark.white {
 
 @keyframes hide {
   0% {
-    -webkit-transform: translate(-50%) scale(1);
             transform: translate(-50%) scale(1); }
   10% {
-    -webkit-transform: translate(-50%) scale(1.4);
             transform: translate(-50%) scale(1.4); }
   99% {
-    -webkit-transform: translate(-50%) scale(0);
             transform: translate(-50%) scale(0); }
   100% {
-    -webkit-transform: translate(-50%) scale(0);
             transform: translate(-50%) scale(0);
     display: none; } }
 
@@ -444,3 +440,63 @@ mark.white {
   display: block;
   -webkit-animation: hide .5s forwards;
           animation: hide .5s forwards; }
+
+@keyframes particle{
+  100%{
+    box-shadow: 60px 0px 20px 0px #fff,0px 60px 20px 0px #fff,-60px 0px 20px 0px #fff,0px -60px 20px 0px #fff;
+  }
+}
+@keyframes particlerotate{
+  100%{
+    transform:rotate(1800deg);
+  }
+}
+.particle {
+  position: absolute;
+  width: 10.0rem;
+  height: 12.4rem;
+  left: 0;
+  top:0;
+  z-index: 2;
+  overflow:hidden;
+  pointer-events:none;
+  .playing &{
+    animation:particlerotate 5s cubic-bezier(.68,.01,.13,1);
+  }
+}
+.particle span{
+    box-shadow: 650px 0px 20px 0px #fff,0px 650px 20px 0px #fff,-650px 0px 20px 0px #fff,0px -650px 20px 0px #fff;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    display: block;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    .playing &{
+        animation:particle 1s 3;
+      }
+    &:nth-child(2){
+      width: 20px;
+      height: 20px;
+      .playing &{
+        animation:particle 1s .25s 3;
+      }
+    }
+    &:nth-child(3){
+      width: 25px;
+      height: 25px;
+      .playing &{
+        animation:particle 1s .5s 3;
+      }
+    }
+     &:nth-child(4){
+      width: 25px;
+      height: 25px;
+      .playing &{
+        animation:particle 1s .75s 3;
+      }
+    }
+}
+
